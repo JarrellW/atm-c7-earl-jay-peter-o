@@ -15,6 +15,7 @@ public abstract class Account {
     public Account(Double balance, Map transactionHistory, Object accountHolder) {
         this.balance = balance;
         this.transactionHistory = new ArrayList<Object>();
+        this.accountHolder = accountHolder;
     }
 
     /*
@@ -32,12 +33,13 @@ public abstract class Account {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(Double amount) {
         this.balance = balance;
     }
 
     //Every account object starts at id=0
-    //Setter increments and returns id.
+    //Getter increments and returns id.
+    //Make sure this actually works in practice.
     public int getTransactionID() {
         this.transactionID++;
         return transactionID;
@@ -53,28 +55,36 @@ public abstract class Account {
     public boolean withdraw(double amount) {
         //If amount <= balance.
         //Subtract amount from balance, call setBalance to update balance, return true.
+
+        if (balance != null && amount <= balance) {
+            balance = balance - amount;
+            return true;
+        }
         //Else return false(insufficient funds)
+
         return false;
     }
 
     public void deposit(double amount) {
-        // balance += amount;
+        balance += amount;
+
     }
 
-    public void transfer(double amount, Object account) {
-        //call setBalance of account parameter passed and += amount.
+    public void transfer(double amount, Object targetAccount) {
+        //call setBalance of targetAccount passed and += amount.
+
+        //targetAccount.setBalance(getBalance() + amount);
     }
 
     //Accounts should be opened and closed by user class.
 
     /**
      * Override toString().
+     * Will write once transaction object is figured out
      */
 
     @Override
-    public String toString() {
-        return null;
-    }
+    public abstract String toString();
 
 
 
