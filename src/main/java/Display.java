@@ -7,10 +7,16 @@ public class Display {
     public static void printMenuOptions() {
         System.out.println("1:Login 2:Create User");
     }
-    public static void loggedInMenu(){
+    public static void loggedInDisplay(){
         System.out.println("1:Withdraw 2:Deposit 3:transfer 4:Get Balance 5:Logout 6:Close Account");
-    }
 
+    }
+    public static void logOutMenu(){
+        System.out.println("1: Yes, 2: No");
+    }
+    public static void closedAccountMenu(){
+        System.out.println("1 Yes, 2: No");
+    }
     public String getStringInput() {
         String userInput = scanner.nextLine();
         System.out.println(userInput);
@@ -21,5 +27,8 @@ public class Display {
         Integer userInput = scanner.nextInt();
         return userInput;
     }
-
+    public Double getDoubleInput(){
+        Double userInput = scanner.nextDouble();
+        return userInput;
+    }
 }
