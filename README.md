@@ -34,7 +34,7 @@ Tests should demonstrate proper behavior, and proper handling of misuse (eg. att
 
 
 Recommended:
-Create a `Console` class that manages console interactions.
+Create a `Display` class that manages console interactions.
 Create a `ConsoleMock` for testing (provide scripted user input using this object).
 
 ## What's next?
