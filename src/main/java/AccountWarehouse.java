@@ -36,4 +36,28 @@ public class AccountWarehouse {
         return accountNumber;
     }
 
+    public Savings createSavingsAccount(User accountHolder) {
+        ArrayList<Transaction> transactionHistory = new ArrayList<Transaction>();
+        Savings newAccount = new Savings(0D, transactionHistory, accountHolder);
+        accounts.add(newAccount);
+        accountHolder.addAccount(newAccount);
+        return newAccount;
+    }
+
+    public Checking createCheckingAccount(User accountHolder) {
+        ArrayList<Transaction> transactionHistory = new ArrayList<Transaction>();
+        Checking newAccount = new Checking(0D, transactionHistory, accountHolder);
+        accounts.add(newAccount);
+        accountHolder.addAccount(newAccount);
+        return newAccount;
+    }
+
+    public Investment createInvestmentAccount(User accountHolder) {
+        ArrayList<Transaction> transactionHistory = new ArrayList<Transaction>();
+        Investment newAccount = new Investment(0D, transactionHistory, accountHolder);
+        accounts.add(newAccount);
+        accountHolder.addAccount(newAccount);
+        return newAccount;
+    }
+
 }

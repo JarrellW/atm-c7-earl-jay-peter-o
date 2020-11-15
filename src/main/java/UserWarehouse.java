@@ -43,5 +43,12 @@ public class UserWarehouse {
         return uuid;
     }
 
+    public User addNewUser(String firstName, String lastName, String password) {
+        //create new User object and add it to list of Users
+        User newUser = new User(firstName, lastName, password, this);
+        this.userList.add(newUser);
+        return newUser;
+    }
+
 
 }
