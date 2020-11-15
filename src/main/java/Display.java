@@ -8,30 +8,44 @@ public class Display {
         System.out.println("1:Login 2:Create User");
     }
     public static void loggedInDisplay(){
-        System.out.println("1:Withdraw 2:Deposit 3:transfer 4:Get Balance 5:Logout 6:Close Account 7: Add Account");
+        System.out.println("1: Add Account \n" +
+                "2: Get Balance \n" +
+                "3: Deposit \n" +
+                "4: Withdraw \n" +
+                "5: Transfer \n" +
+                "6: Transaction History \n" +
+                "7: Logout \n" +
+                "8: Close Account");
 
     }
     public static void logOutMenu(){
-        System.out.println("1: Yes, 2: No");
+        System.out.println("1: Yes \n" +
+                "2: 2No");
     }
     public static void closedAccountMenu(){
-        System.out.println("1: Yes, 2: No");
+        System.out.println("1: Yes\n" +
+                "2: No");
     }
     public static void addAccountsMenu(){
-        System.out.println("1: Checking, 2: Savings, 3: Investment");
+        System.out.println("1: Checking \n" +
+                "2: Savings \n" +
+                "3: Investments \n");
     }
 
     public String getStringInput() {
+        Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
         System.out.println(userInput);
         return userInput;
     }
 
     public Integer getIntegerInput(){
+        Scanner scanner = new Scanner(System.in);
         Integer userInput = scanner.nextInt();
         return userInput;
     }
     public Double getDoubleInput(){
+        Scanner scanner = new Scanner(System.in);
         Double userInput = scanner.nextDouble();
         return userInput;
     }
