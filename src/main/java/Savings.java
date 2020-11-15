@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
 public class Savings extends Account implements Summary {
+    private double APY = 0.70;
+    private double n = 4;
+
     /**
      * Constructor
      *
@@ -10,6 +13,13 @@ public class Savings extends Account implements Summary {
      */
     public Savings(double balance, User accountHolder, String accountNumber) {
         super(balance, accountHolder, accountNumber);
+    }
+
+    public double compoundInterest(int years) {
+        double principal = this.getBalance();
+        double amount = principal * Math.pow(1 + (APY / n), n * years);
+        double compAmount = amount - principal;
+        return compAmount;
     }
 
 

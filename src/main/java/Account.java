@@ -32,10 +32,6 @@ public abstract class Account implements Summary {
         this.balance = amount;
     }
 
-    public ArrayList<Transaction> getTransactionHistory() {
-        return transactionHistory;
-    }
-
     public String getAccountNumber() {
         return accountNumber;
     }
@@ -45,7 +41,7 @@ public abstract class Account implements Summary {
      */
     public boolean withdraw(double amount ) {
 
-        if (amount <= balance) {
+        if (amount <= balance && amount > 0) {
             this.setBalance(this.getBalance() - amount);
             return true;
         }
@@ -54,8 +50,12 @@ public abstract class Account implements Summary {
         return false;
     }
 
-    public void deposit(double amount) {
-        this.setBalance(this.getBalance() + amount);
+    public boolean deposit(double amount) {
+        if (amount > 0) {
+            this.setBalance(this.getBalance() + amount);
+            return true;
+        }
+        return false;
     }
 
     public void transfer(double amount, Account targetAccount) {
