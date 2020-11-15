@@ -1,22 +1,23 @@
 import java.util.ArrayList;
 
-public class Savings extends Account {
+public class Savings extends Account implements Summary {
     /**
      * Constructor
-     *  @param balance
+     *
+     * @param balance
      * @param transactionHistory
      * @param accountHolder
      */
-    public Savings(Double balance, ArrayList<Transaction> transactionHistory, Object accountHolder) {
-        super(balance, transactionHistory, accountHolder);
+    public Savings(double balance, ArrayList<Transaction> transactionHistory, User accountHolder, String accountNumber) {
+        super(balance, transactionHistory, accountHolder, accountNumber);
     }
 
-    /**
-     * Override toString().
-     * Will write once transaction object is figured out
-     */
-    @Override
-    public String toString() {
-        return null;
+
+    public String toString(User accountHolder) {
+        {
+            double balance = this.getBalance();
+            return String.format("%s %s\n %s\n%s\n%.2f", accountHolder.getFirstName(), accountHolder.getLastName(), "Savings", this.getAccountNumber(), this.getBalance());
+
+        }
     }
 }

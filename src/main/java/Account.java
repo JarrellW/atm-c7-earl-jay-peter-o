@@ -1,21 +1,23 @@
 import java.util.ArrayList;
 
-public abstract class Account {
+public abstract class Account implements Summary {
 
     private double balance;
-    private int transactionID = 0;
     private String accountNumber;
-    private Object accountHolder;
+    private User accountHolder;
     private ArrayList<Transaction> transactionHistory;
+    //private String accountType;
 
 
     /**
      * Constructor
      */
-    public Account(double balance, ArrayList<Transaction> transactionHistory, Object accountHolder) {
+    public Account(double balance, ArrayList<Transaction> transactionHistory, User accountHolder, String accountNumber) {
         this.balance = balance;
         this.transactionHistory = transactionHistory;
         this.accountHolder = accountHolder;
+        this.accountNumber = accountNumber;
+        //this.accountType = accountType;
     }
 
 
@@ -28,15 +30,7 @@ public abstract class Account {
     }
 
     public void setBalance(double amount) {
-        this.balance = balance;
-    }
-
-    //Every account object starts at id=0
-    //Getter increments and returns id.
-    //Make sure this actually works in practice.
-    public int getTransactionID() {
-        this.transactionID++;
-        return transactionID;
+        this.balance = amount;
     }
 
     public ArrayList<Transaction> getTransactionHistory() {
@@ -50,54 +44,35 @@ public abstract class Account {
     /**
      * Methods
      */
-    public boolean withdraw(double amount) {
-        //If amount <= balance.
-        //Subtract amount from balance, call setBalance to update balance, return true.
+    public boolean withdraw(double amount ) {
 
         if (amount <= balance) {
-            balance = balance - amount;
+            this.setBalance(this.getBalance() - amount);
             return true;
         }
-        //Else return false(insufficient funds)
 
+        //return false(insufficient funds)
         return false;
     }
 
     public void deposit(double amount) {
-        balance += amount;
-
+        this.setBalance(this.getBalance() + amount);
     }
 
-    public void transfer(double amount, Object targetAccount) {
-        //call setBalance of targetAccount passed and += amount.
+    public void transfer(double amount, Account targetAccount) {
 
-        //targetAccount.setBalance(getBalance() + amount);
+        targetAccount.setBalance(amount);
+
     }
-
-    //Accounts should be opened and closed by user class.
-
-    /**
-     * Override toString().
-     * Will write once transaction object is figured out
-     */
-
-    @Override
-    public abstract String toString();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
+
+
+
+
+
+
+
+
+

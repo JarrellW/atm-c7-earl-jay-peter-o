@@ -1,9 +1,9 @@
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import static org.junit.Assert.*;
 
 public class UserTest {
-
+/*
     @Test
     public void userConstructorTest() {
         UserWarehouse userWarehouse = new UserWarehouse();
@@ -21,8 +21,13 @@ public class UserTest {
         assertEquals(expected, actual);
     }
 
+<<<<<<< HEAD
     @Test
     public void validatePasswordTest() {
 
     }
+=======
+ */
+
+>>>>>>> 6b187e4d02d7d9c449d46bc9dbd2b7930937fc53
 }

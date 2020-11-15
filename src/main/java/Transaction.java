@@ -4,6 +4,7 @@ public class Transaction {
     private Account originAccount;
     private Account targetAccount;
 
+
     public Transaction(double amount, Account originAccount) {
         this.amount = amount;
         this.originAccount = originAccount;

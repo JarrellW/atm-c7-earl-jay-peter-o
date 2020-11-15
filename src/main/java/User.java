@@ -66,4 +66,16 @@ public class User {
     public String getUUID() {
         return uuid;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public ArrayList<Account> getAccounts() {
+        return accounts;
+    }
 }
