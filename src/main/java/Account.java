@@ -77,6 +77,29 @@ public abstract class Account implements Summary {
         + "'s account");
     }
 
+    /**
+     * method that is called in User.printAccountTransactionHistory to print transaction history
+     */
+    public void printTransactionHistory() {
+        System.out.printf("\nTransaction history for account %s\n", this.accountNumber);
+        //prints a summary line for every transaction in this account's transaction history
+        //starting with the most recent transaction and going backwards
+        for(int i = this.transactionHistory.size() - 1; i >= 0; i--) {
+            System.out.printf(this.transactionHistory.get(i).getSummaryLine());
+        }
+        System.out.println();
+    }
+
+    /**
+     * method to add a new transaction to an existing account's transaction history
+     * @param amount amount of money target account balance will be adjusted by
+     */
+    public void addTransaction(double amount) {
+        //create a new transaction object and add it to transaction history
+        Transaction newTransaction = new Transaction(amount, this);
+        this.transactionHistory.add(newTransaction);
+    }
+
 
 }
 

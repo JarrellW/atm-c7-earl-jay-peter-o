@@ -58,13 +58,39 @@ public class User {
     public void printAccountsSummary() {
         System.out.printf("\n\n%s's accounts summary", this.firstName);
         for(int i = 0; i < this.accounts.size(); i++) {
-            System.out.printf("%d) %s\n", this.accounts.get(i).getSummaryLine());
+            System.out.printf("%d) %s\n", i+1, this.accounts.get(i).getSummaryLine());
         }
         System.out.println();
     }
 
+    public void printAccountTransactionHistory(int accountIndex) {
+        this.accounts.get(accountIndex).printTransactionHistory();
+    }
+
     public void addAccount(Account anAccount) {
         this.accounts.add(anAccount);
+    }
+
+    public double getAccountBalance(int accountIndex) {
+        return this.accounts.get(accountIndex).getBalance();
+    }
+
+    /**
+     * Method to get the account number of a particular account, useful for transfers
+     * @param accountIndex index of the account in user's account list
+     * @return returns specific account number in string form
+     */
+    public String getAccountNumber(int accountIndex) {
+        return this.accounts.get(accountIndex).getAccountNumber();
+    }
+
+    /**
+     * method to add transaction to a particular account in a user's accounts list
+     * @param accountIndex index of account where transaction is occurring
+     * @param amount amount of money balance is adjusted by
+     */
+    public void addAccountTransaction(int accountIndex, double amount) {
+        this.accounts.get(accountIndex).addTransaction(amount);
     }
 
     public String getPasswordHash() {
@@ -85,5 +111,9 @@ public class User {
 
     public ArrayList<Account> getAccounts() {
         return accounts;
+    }
+
+    public int getNumAccounts() {
+        return accounts.size();
     }
 }

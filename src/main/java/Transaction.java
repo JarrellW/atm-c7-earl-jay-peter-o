@@ -16,6 +16,15 @@ public class Transaction {
         this.targetAccount = targetAccount;
     }
 
+    /**
+     * method to create a summaryLine for a particular transaction, to be printed in the
+     * Account.printTransactionHistory method
+     * @return returns summaryLine for transaction
+     */
+    public String getSummaryLine() {
+        String summaryLine = String.format("$%.02f from %o to %o", amount, originAccount, targetAccount);
+        return summaryLine;
+    }
 
     public double getAmount() {
         return amount;
