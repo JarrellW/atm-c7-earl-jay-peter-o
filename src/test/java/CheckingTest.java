@@ -129,34 +129,4 @@ class CheckingTest {
 
     }
 
-
-    @Test
-    void getSummaryLine() {
-
-    }
-
-    @Test
-    void printTransactionHistory() {
-    }
-
-    @Test
-    void addTransaction() {
-        //Given
-        double amount = 10.00;
-        double prevOriginBalance = checkingTest1.getBalance();
-        double prevTargetBalance = checkingTest2.getBalance();
-
-        //When
-        double postOriginBalance = prevOriginBalance - amount;
-        double postTargetBalance = prevTargetBalance + amount;
-
-        checkingTest1.transfer(amount, checkingTest2);
-
-        double actualOriginBalance = checkingTest1.getBalance();
-        double actualTargetBalance = checkingTest2.getBalance();
-    }
-
-    @Test
-    void testToString() {
-    }
 }
