@@ -1,9 +1,9 @@
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import static org.junit.Assert.*;
 
 public class UserTest {
-
+/*
     @Test
     public void userConstructorTest() {
         User newUser = new User("peter", "oberg", "password");
@@ -18,5 +18,7 @@ public class UserTest {
 
         assertEquals(expected, actual);
     }
+
+ */
 
 }

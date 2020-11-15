@@ -9,19 +9,15 @@ public class Checking extends Account {
      * @param accountHolder
      * @param transactionHistory
      */
-    public Checking(Double balance, ArrayList<Transaction> transactionHistory, Object accountHolder) {
-        super(balance, transactionHistory, accountHolder);
+    public Checking(double balance, ArrayList<Transaction> transactionHistory, User accountHolder, String accountNumber) {
+        super(balance, transactionHistory, accountHolder, accountNumber);
     }
 
+    public String toString(User accountHolder) {
+        {
+            double balance = this.getBalance();
+            return String.format("%s %s\n %s\n%s\n%.2f", accountHolder.getFirstName(), accountHolder.getLastName(), "Savings", this.getAccountNumber(), this.getBalance());
 
-
-    /**
-     * Override toString().
-     * Will write once transaction object is figured out
-     */
-    @Override
-    public String toString() {
-        return null;
+        }
     }
-
 }
