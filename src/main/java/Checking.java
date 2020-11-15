@@ -7,10 +7,10 @@ public class Checking extends Account implements Summary{
      *
      * @param balance
      * @param accountHolder
-     * @param transactionHistory
+     * @param accountNumber
      */
-    public Checking(double balance, ArrayList<Transaction> transactionHistory, User accountHolder, String accountNumber) {
-        super(balance, transactionHistory, accountHolder, accountNumber);
+    public Checking(double balance, User accountHolder, String accountNumber) {
+        super(balance, accountHolder, accountNumber);
     }
 
     public String toString(User accountHolder) {
