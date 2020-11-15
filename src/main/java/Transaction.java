@@ -22,7 +22,9 @@ public class Transaction {
      * @return returns summaryLine for transaction
      */
     public String getSummaryLine() {
-        String summaryLine = String.format("$%.02f from %o to %o", amount, originAccount, targetAccount);
+        //formatting didn't work properly need to fix
+//        String summaryLine = String.format("$%.02f from %o to %o", amount, originAccount, targetAccount);
+        String summaryLine = String.format("$%.02f\n", amount);
         return summaryLine;
     }
 
