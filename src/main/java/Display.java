@@ -20,7 +20,7 @@ public class Display {
     }
     public static void logOutMenu(){
         System.out.println("1: Yes \n" +
-                "2: 2No");
+                "2: No");
     }
     public static void closedAccountMenu(){
         System.out.println("1: Yes\n" +
@@ -32,16 +32,16 @@ public class Display {
                 "3: Investments \n");
     }
 
-    public String getStringInput() {
+    public Integer getIntInput() {
         Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.nextLine();
+        Integer userInput = scanner.nextInt();
         System.out.println(userInput);
         return userInput;
     }
 
-    public Integer getIntegerInput(){
+    public String getStringInput(){
         Scanner scanner = new Scanner(System.in);
-        Integer userInput = scanner.nextInt();
+        String userInput = scanner.nextLine();
         return userInput;
     }
     public Double getDoubleInput(){
@@ -49,5 +49,5 @@ public class Display {
         Double userInput = scanner.nextDouble();
         return userInput;
     }
+    }
 
-}

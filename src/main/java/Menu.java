@@ -15,7 +15,7 @@ public class Menu {
             System.out.println("ATM Main Menu:");
             Display.printMenuOptions();
             System.out.println("Enter Option Number: ");
-            Integer userInput = display.getIntegerInput();
+            Integer userInput = display.getIntInput();
 
             switch (userInput) {
                 case 1:
@@ -34,7 +34,7 @@ public class Menu {
     public void loggedInMenu() {
         Display.loggedInDisplay();
         System.out.println("Enter Option Number: ");
-        Integer userInput = display.getIntegerInput();
+        Integer userInput = display.getIntInput();
 
         switch (userInput) {
             case 1:
@@ -74,7 +74,7 @@ public class Menu {
         String iD = display.getStringInput();
         System.out.println("Enter Password: ");
         String pin = display.getStringInput();
-       currentUser = warehouse.userLogin(iD, pin);
+       currentUser = warehouse.userLogin(iD,pin);
        if (currentUser != null) {
            loggedInMenu();
        }
@@ -95,14 +95,13 @@ public class Menu {
         User user = warehouse.addNewUser(firstName,lastName,password);
         System.out.println(" \n User " + firstName + " " + lastName + " successfully created, here is your ID: " + user.getUUID() + "\n");
         currentUser = user;
-
         loggedInMenu();
     }
 
     public void withdrawMenu() {
         System.out.println("Which account would you like to withdraw from? \n0. Back");
         displayUserAccounts();
-        Integer accountSelection = display.getIntegerInput() - 1;
+        Integer accountSelection = display.getIntInput() - 1;
         if (accountSelection == -1) {
             loggedInMenu();
         }
@@ -118,7 +117,7 @@ public class Menu {
     public void depositMenu() {
         System.out.println("Which account would you like to deposit into? \n0. Back");
         displayUserAccounts();
-        Integer accountSelection1 = display.getIntegerInput() - 1;
+        Integer accountSelection1 = display.getIntInput() - 1;
         if (accountSelection1 == -1) {
             loggedInMenu();
         }
@@ -134,13 +133,13 @@ public class Menu {
     public void transferMenu() {
         System.out.println("Which account would you like to transfer from? \n0. Back");
         displayUserAccounts();
-        Integer accountSelection2 = display.getIntegerInput() - 1;
+        Integer accountSelection2 = display.getIntInput() - 1;
         if (accountSelection2 == -1) {
             loggedInMenu();
         }
         System.out.println("Which Account would you like to transfer to? \n0. Back");
         displayUserAccounts();
-        Integer accountSelection3 = display.getIntegerInput() - 1;
+        Integer accountSelection3 = display.getIntInput() - 1;
         if (accountSelection3 == -1) {
             loggedInMenu();
         }
@@ -160,7 +159,7 @@ public class Menu {
     public void getBalance() {
         System.out.println("Which account balance would you like to check? \n0. Back");
          displayUserAccounts();
-        Integer accountSelection4 = display.getIntegerInput() - 1;
+        Integer accountSelection4 = display.getIntInput() - 1;
         if (accountSelection4 == -1) {
             loggedInMenu();
         }
@@ -172,7 +171,7 @@ public class Menu {
     public void logoutMenu() {
         System.out.println("Would you like to logout?");
         display.logOutMenu();
-        Integer logoutSelection = display.getIntegerInput();
+        Integer logoutSelection = display.getIntInput();
         if (logoutSelection == 1) {
                 currentUser = null;
             runMenu();
@@ -184,7 +183,7 @@ public class Menu {
     public void closeAccountMenu() {
         System.out.println("Select the account you wish to close \n0. Back");
             displayUserAccounts();
-        Integer closeAccountSelection2 = display.getIntegerInput() - 1;
+        Integer closeAccountSelection2 = display.getIntInput() - 1;
         if (closeAccountSelection2 == -1) {
             loggedInMenu();
         }
@@ -192,7 +191,7 @@ public class Menu {
             if (selectedAccount.getBalance() == 0) {
                 System.out.println("Are you sure you want to close this account?");
                 display.closedAccountMenu();
-                Integer closeAccountSelection = display.getIntegerInput();
+                Integer closeAccountSelection = display.getIntInput();
                 if (closeAccountSelection == 1){
                     System.out.println("Are you sure?");
                     display.closedAccountMenu();
@@ -215,7 +214,7 @@ public class Menu {
         public void addAccountMenu(){
             System.out.println("What type of Account would you like to make?");
             Display.addAccountsMenu();
-            Integer accountSelection6 = display.getIntegerInput();
+            Integer accountSelection6 = display.getIntInput();
             System.out.println("How much would you like to deposit into your new Account?");
             Double amount2 = display.getDoubleInput();
             Random ran = new Random();
@@ -250,7 +249,7 @@ public class Menu {
     public void transactionHistoryMenu(){
         System.out.println("Which account transaction history would you like to view? \n0. Back");
         displayUserAccounts();
-        Integer accountSelection4 = display.getIntegerInput() - 1;
+        Integer accountSelection4 = display.getIntInput() - 1;
         if (accountSelection4 == -1) {
             loggedInMenu();
         }
