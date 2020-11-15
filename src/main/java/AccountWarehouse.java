@@ -7,6 +7,11 @@ public class AccountWarehouse {
     private ArrayList<User> users;
     private ArrayList<Account> accounts;
 
+    public AccountWarehouse() {
+        this.users = new ArrayList<User>();
+        this.accounts = new ArrayList<Account>();
+    }
+
     public String getNewAccountNumber() {
         //inits
         String accountNumber;

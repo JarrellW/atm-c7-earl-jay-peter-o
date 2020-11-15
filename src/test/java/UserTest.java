@@ -1,9 +1,8 @@
-import org.testng.annotations.Test;
-
+import org.junit.jupiter.api.Test;
 import static org.junit.Assert.*;
 
 public class UserTest {
-/*
+
     @Test
     public void userConstructorTest() {
         UserWarehouse userWarehouse = new UserWarehouse();
@@ -21,13 +20,11 @@ public class UserTest {
         assertEquals(expected, actual);
     }
 
-<<<<<<< HEAD
     @Test
     public void validatePasswordTest() {
-
+        UserWarehouse userWarehouse = new UserWarehouse();
+        User newUser = new User("peter", "oberg", "password", userWarehouse);
+        boolean expected = true;
+        assertEquals(expected,newUser.validatePassword("password"));
     }
-=======
- */
-
->>>>>>> 6b187e4d02d7d9c449d46bc9dbd2b7930937fc53
 }
