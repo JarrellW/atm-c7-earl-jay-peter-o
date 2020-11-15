@@ -9,10 +9,11 @@ public abstract class Account {
     private Object accountHolder;
     private ArrayList<Object> transactionHistory;
 
+
     /**
      * Constructor
      */
-    public Account(Double balance, Map transactionHistory, Object accountHolder) {
+    public Account(Double balance, ArrayList<Object> transactionHistory, Object accountHolder) {
         this.balance = balance;
         this.transactionHistory = new ArrayList<Object>();
         this.accountHolder = accountHolder;
