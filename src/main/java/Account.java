@@ -32,10 +32,6 @@ public abstract class Account implements Summary {
         this.balance = amount;
     }
 
-    public ArrayList<Transaction> getTransactionHistory() {
-        return transactionHistory;
-    }
-
     public String getAccountNumber() {
         return accountNumber;
     }
