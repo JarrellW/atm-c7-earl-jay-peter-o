@@ -5,7 +5,8 @@ public class Display {
     Scanner scanner = new Scanner(System.in);
 
     public static void printMenuOptions() {
-        System.out.println("1:Login 2:Create User");
+        System.out.println("1: Login \n" +
+                "2: Create User");
     }
     public static void loggedInDisplay(){
         System.out.println("1: Add Account \n" +
