@@ -46,6 +46,7 @@ public class AccountWarehouse {
             if(a.getAccountNumber().equals(accountNumber)) {
                 accounts.remove(a);
                 accountHolder.removeAccountFromUserList(a);
+                break;
             }
         }
     }
