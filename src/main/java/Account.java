@@ -65,6 +65,18 @@ public abstract class Account implements Summary {
 
     }
 
+    /**
+     * method for accounts to spit out information for the user in console
+     * @return returns a string with account number, balance, and account name(or maybe type?)
+     */
+    public String getSummaryLine() {
+        //get balance of this account
+        double balance = this.getBalance();
+        //account number, balance, account name
+        return String.format("%s : $%.02f : %s", this.accountNumber, balance, String.valueOf(this.accountHolder)
+        + "'s account");
+    }
+
 
 }
 
