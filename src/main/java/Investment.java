@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Investment extends Account {
+public class Investment extends Account implements Summary {
     /**
      * Constructor
      *
