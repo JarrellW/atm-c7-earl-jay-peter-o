@@ -121,6 +121,7 @@ public class User {
         for(Account a : accounts) {
             if(a.getAccountNumber().equals(account.getAccountNumber())) {
                 this.accounts.remove(a);
+                break;
             }
         }
     }

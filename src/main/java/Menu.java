@@ -197,7 +197,11 @@ public class Menu {
                     display.closedAccountMenu();
                     if (closeAccountSelection == 1){
                         System.out.println("Thank you for your business");
+<<<<<<< HEAD
 //                        accountWarehouse.removeAccount(currentUser, selectedAccount.getAccountNumber());
+=======
+                        accountWarehouse.removeAccount(currentUser, selectedAccount.getAccountNumber());
+>>>>>>> ba894b977819f1d3d65f29d553605f29d5f3855b
                         loggedInMenu();
                     }
                 }else{
