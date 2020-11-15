@@ -27,4 +27,14 @@ public class UserTest {
         boolean expected = true;
         assertEquals(expected,newUser.validatePassword("password"));
     }
+
+    @Test
+    public void printAccountSummaryTest() {
+        UserWarehouse userWarehouse = new UserWarehouse();
+        AccountWarehouse accountWarehouse = new AccountWarehouse();
+        User newUser = new User("peter", "oberg", "password", userWarehouse);
+        accountWarehouse.createCheckingAccount(newUser);
+        accountWarehouse.createInvestmentAccount(newUser);
+        newUser.printAccountsSummary();
+    }
 }

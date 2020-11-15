@@ -72,7 +72,7 @@ public abstract class Account implements Summary {
         //get balance of this account
         double balance = this.getBalance();
         //account number, balance, account name
-        return String.format("%s : $%.02f : %s", this.accountNumber, balance, String.valueOf(this.accountHolder)
+        return String.format("%s : $%.02f : %s", this.accountNumber, balance, this.accountHolder.getFirstName()
         + "'s account");
     }
 
