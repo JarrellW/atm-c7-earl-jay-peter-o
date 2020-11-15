@@ -33,8 +33,8 @@ public class UserTest {
         UserWarehouse userWarehouse = new UserWarehouse();
         AccountWarehouse accountWarehouse = new AccountWarehouse();
         User newUser = new User("peter", "oberg", "password", userWarehouse);
-        accountWarehouse.createCheckingAccount(newUser);
-        accountWarehouse.createInvestmentAccount(newUser);
+        accountWarehouse.createCheckingAccount(newUser, 10.0);
+        accountWarehouse.createInvestmentAccount(newUser, 10.0);
         newUser.printAccountsSummary();
     }
 
@@ -43,7 +43,7 @@ public class UserTest {
         UserWarehouse userWarehouse = new UserWarehouse();
         AccountWarehouse accountWarehouse = new AccountWarehouse();
         User newUser = new User("peter", "oberg", "password", userWarehouse);
-        accountWarehouse.createCheckingAccount(newUser);
+        accountWarehouse.createCheckingAccount(newUser, 10.0);
         newUser.addAccountTransaction(0, 10.0);
         newUser.addAccountTransaction(0, 5);
         newUser.addAccountTransaction(0, -10);
