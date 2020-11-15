@@ -61,8 +61,8 @@ public abstract class Account implements Summary {
 
     public void transfer(double amount, Account targetAccount) {
 
-        targetAccount.setBalance(amount);
-
+        this.withdraw(amount);
+        targetAccount.deposit(amount);
     }
 
     /**
