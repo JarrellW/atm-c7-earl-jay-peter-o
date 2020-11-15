@@ -22,14 +22,14 @@ public class User {
      * @param lastName user's last name
      * @param password user's password, stored as a hash
      */
-    public User(String firstName, String lastName, String password) {
+    public User(String firstName, String lastName, String password, UserWarehouse uWarehouse) {
         //set user's name
         this.firstName = firstName;
         this.lastName = lastName;
         //store hash of user's pw
         this.passwordHash = DigestUtils.sha256Hex(password);
         //get unique user id
-        this.uuid = UserWarehouse.getNewUserUUID();
+        this.uuid = uWarehouse.getNewUserUUID();
         //create list of user accounts
         this.accounts = new ArrayList<Account>();
         //print log message
