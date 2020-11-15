@@ -2,5 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AccountWarehouse {
-    private HashMap<String, ArrayList> accountList = new HashMap<String, ArrayList>();
+
+    private ArrayList<User> users;
+    private ArrayList<Account> accounts;
+
 }
