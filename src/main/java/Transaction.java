@@ -24,7 +24,7 @@ public class Transaction {
     public String getSummaryLine() {
         //formatting didn't work properly need to fix
 //        String summaryLine = String.format("$%.02f from %o to %o", amount, originAccount, targetAccount);
-        String summaryLine = String.format("$%.02f\n", amount);
+        String summaryLine = String.format("$%.02f from " + originAccount + " to " + targetAccount + "\n", amount);
         return summaryLine;
     }
 
