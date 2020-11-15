@@ -19,7 +19,8 @@ public class Savings extends Account implements Summary {
         double principal = this.getBalance();
         double amount = principal * Math.pow(1 + (APY / n), n * years);
         double compAmount = amount - principal;
-        return compAmount;
+        double aggregateAmount = amount + principal;
+        return aggregateAmount;
     }
 
 
