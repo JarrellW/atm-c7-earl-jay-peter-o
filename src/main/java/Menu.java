@@ -1,4 +1,4 @@
-import java.io.Console;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -6,6 +6,7 @@ public class Menu {
     Display display = new Display();
     UserWarehouse warehouse = new UserWarehouse();
     User currentUser;
+    AccountWarehouse accountWarehouse = new AccountWarehouse();
 
     public void runMenu() {
         boolean running = true;
@@ -221,22 +222,25 @@ public class Menu {
             Integer num = ran.nextInt(90000000) + 10000000;
             String accountNum = Integer.toString(num);
             if (accountSelection6 == 1){
-                Checking checking = new Checking(amount2,new ArrayList<Transaction>(),currentUser,accountNum);
-                currentUser.getAccounts().add(checking);
-                System.out.println("\n Your Checking account was successfully created, with balance of " + checking.getBalance() + "\n");
+                accountWarehouse.createCheckingAccount(currentUser,amount2);
+//                Checking checking = new Checking(amount2,currentUser,accountNum);
+//                currentUser.getAccounts().add(checking);
+                System.out.println("\n Your Checking account was successfully created, with balance of " + amount2 + "\n");
                 loggedInMenu();
             }
             if (accountSelection6 == 2){
-                Savings savings = new Savings(amount2,new ArrayList<Transaction>(),currentUser,accountNum);
-                currentUser.getAccounts().add(savings);
-                System.out.println("\n You Savings account was successfully created, with balance of " + savings.getBalance()+ "\n");
+                accountWarehouse.createSavingsAccount(currentUser,amount2);
+//                Savings savings = new Savings(amount2,currentUser,accountNum);
+//                currentUser.getAccounts().add(savings);
+                System.out.println("\n You Savings account was successfully created, with balance of " + amount2 + "\n");
                 loggedInMenu();
 
             }
             if (accountSelection6 == 3){
-                Investment investment = new Investment(amount2,new ArrayList<Transaction>(),currentUser,accountNum);
-                currentUser.getAccounts().add(investment);
-                System.out.println("\n You Investment account was successfully created, with balance of " + investment.getBalance()+ "\n");
+                accountWarehouse.createInvestmentAccount(currentUser,amount2);
+//                Investment investment = new Investment(amount2,currentUser,accountNum);
+//                currentUser.getAccounts().add(investment);
+                System.out.println("\n You Investment account was successfully created, with balance of " + amount2 + "\n");
                 loggedInMenu();
 
             }
