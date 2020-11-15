@@ -27,4 +27,29 @@ public class UserTest {
         boolean expected = true;
         assertEquals(expected,newUser.validatePassword("password"));
     }
+
+    @Test
+    public void printAccountSummaryTest() {
+        UserWarehouse userWarehouse = new UserWarehouse();
+        AccountWarehouse accountWarehouse = new AccountWarehouse();
+        User newUser = new User("peter", "oberg", "password", userWarehouse);
+        accountWarehouse.createCheckingAccount(newUser);
+        accountWarehouse.createInvestmentAccount(newUser);
+        newUser.printAccountsSummary();
+    }
+
+    @Test
+    public void printAccountTransactionHistoryTest() {
+        UserWarehouse userWarehouse = new UserWarehouse();
+        AccountWarehouse accountWarehouse = new AccountWarehouse();
+        User newUser = new User("peter", "oberg", "password", userWarehouse);
+        accountWarehouse.createCheckingAccount(newUser);
+        newUser.addAccountTransaction(0, 10.0);
+        newUser.addAccountTransaction(0, 5);
+        newUser.addAccountTransaction(0, -10);
+        double expected = 15d;
+        double actual = newUser.getAccountBalance(0);
+        //assertEquals(expected, actual, .001);
+        newUser.printAccountTransactionHistory(0);
+    }
 }

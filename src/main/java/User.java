@@ -6,15 +6,15 @@ import java.util.ArrayList;
 public class User {
 
     //user's first name
-    private String firstName;
+    private final String firstName;
     //user's last name
-    private String lastName;
+    private final String lastName;
     //user's unique user ID
-    private String uuid;
+    private final String uuid;
     //user's hashed password
-    private String passwordHash;
+    private final String passwordHash;
     //user's list of accounts
-    private ArrayList<Account> accounts;
+    private final ArrayList<Account> accounts;
 
     /**
      *
@@ -56,9 +56,9 @@ public class User {
     }
 
     public void printAccountsSummary() {
-        System.out.printf("\n\n%s's accounts summary", this.firstName);
+        System.out.printf("\n%s's accounts summary\n", this.firstName);
         for(int i = 0; i < this.accounts.size(); i++) {
-            System.out.printf("%d) %s\n", i+1, this.accounts.get(i).getSummaryLine());
+            System.out.printf("%d) account number %s\n", i+1, this.accounts.get(i).getSummaryLine());
         }
         System.out.println();
     }

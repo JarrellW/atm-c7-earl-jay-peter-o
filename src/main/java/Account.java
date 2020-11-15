@@ -3,21 +3,20 @@ import java.util.ArrayList;
 public abstract class Account implements Summary {
 
     private double balance;
-    private String accountNumber;
-    private User accountHolder;
-    private ArrayList<Transaction> transactionHistory;
+    private final String accountNumber;
+    private final User accountHolder;
+    private final ArrayList<Transaction> transactionHistory;
     //private String accountType;
 
 
     /**
      * Constructor
      */
-    public Account(double balance, ArrayList<Transaction> transactionHistory, User accountHolder, String accountNumber) {
+    public Account(double balance, User accountHolder, String accountNumber) {
         this.balance = balance;
-        this.transactionHistory = transactionHistory;
+        this.transactionHistory = new ArrayList<Transaction>();
         this.accountHolder = accountHolder;
         this.accountNumber = accountNumber;
-        //this.accountType = accountType;
     }
 
 
@@ -73,7 +72,7 @@ public abstract class Account implements Summary {
         //get balance of this account
         double balance = this.getBalance();
         //account number, balance, account name
-        return String.format("%s : $%.02f : %s", this.accountNumber, balance, String.valueOf(this.accountHolder)
+        return String.format("%s : $%.02f : %s", this.accountNumber, balance, this.accountHolder.getFirstName()
         + "'s account");
     }
 

@@ -5,11 +5,11 @@ public class Savings extends Account implements Summary {
      * Constructor
      *
      * @param balance
-     * @param transactionHistory
+     * @param accountNumber
      * @param accountHolder
      */
-    public Savings(double balance, ArrayList<Transaction> transactionHistory, User accountHolder, String accountNumber) {
-        super(balance, transactionHistory, accountHolder, accountNumber);
+    public Savings(double balance, User accountHolder, String accountNumber) {
+        super(balance, accountHolder, accountNumber);
     }
 
 
