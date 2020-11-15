@@ -48,12 +48,6 @@ public class AccountWarehouse {
      * @param accountNumber unique account number to identify from list which account to close
      */
     public void removeAccount(User accountHolder, String accountNumber) {
-<<<<<<< HEAD
-        for(Account a : accounts) {
-            if(a.getAccountNumber().equals(accountNumber)) {
-                accounts.remove(a);
-                accountHolder.removeAccountFromUserList(a);
-=======
         /**
          * I have no idea why this for each loop threw a ConcurrentModificationException but the
          * for loop below works just fine
@@ -71,7 +65,6 @@ public class AccountWarehouse {
                 accountHolder.removeAccountFromUserList(accounts.get(i));
                 //remove from master list
                 accounts.remove(accounts.get(i));
->>>>>>> ba894b977819f1d3d65f29d553605f29d5f3855b
                 break;
             }
         }
