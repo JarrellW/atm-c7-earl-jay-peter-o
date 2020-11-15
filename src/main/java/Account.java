@@ -1,40 +1,33 @@
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public abstract class Account {
 
-    private Double balance;
+    private double balance;
     private int transactionID = 0;
+    private String accountNumber;
     private Object accountHolder;
-    private ArrayList<Object> transactionHistory;
+    private ArrayList<Transaction> transactionHistory;
 
 
     /**
      * Constructor
      */
-    public Account(Double balance, ArrayList<Object> transactionHistory, Object accountHolder) {
+    public Account(double balance, ArrayList<Transaction> transactionHistory, Object accountHolder) {
         this.balance = balance;
-        this.transactionHistory = new ArrayList<Object>();
+        this.transactionHistory = transactionHistory;
         this.accountHolder = accountHolder;
     }
 
-    /*
-    public Account() {
-        this.transactionID = 0;
-    }
-
-     */
 
 
     /**
      * Getters and Setters
      */
-    public Double getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(Double amount) {
+    public void setBalance(double amount) {
         this.balance = balance;
     }
 
@@ -46,8 +39,12 @@ public abstract class Account {
         return transactionID;
     }
 
-    public ArrayList<Object> getTransactionHistory() {
+    public ArrayList<Transaction> getTransactionHistory() {
         return transactionHistory;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
     /**
@@ -57,7 +54,7 @@ public abstract class Account {
         //If amount <= balance.
         //Subtract amount from balance, call setBalance to update balance, return true.
 
-        if (balance != null && amount <= balance) {
+        if (amount <= balance) {
             balance = balance - amount;
             return true;
         }

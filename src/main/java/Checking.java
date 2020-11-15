@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Checking extends Account {
@@ -8,7 +9,7 @@ public class Checking extends Account {
      * @param accountHolder
      * @param transactionHistory
      */
-    public Checking(Double balance, Map transactionHistory, Object accountHolder) {
+    public Checking(Double balance, ArrayList<Transaction> transactionHistory, Object accountHolder) {
         super(balance, transactionHistory, accountHolder);
     }
 

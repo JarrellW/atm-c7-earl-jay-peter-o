@@ -1,14 +1,13 @@
-import java.util.Map;
+import java.util.ArrayList;
 
 public class Savings extends Account {
     /**
      * Constructor
-     *
-     * @param balance
-     * @param accountHolder
+     *  @param balance
      * @param transactionHistory
+     * @param accountHolder
      */
-    public Savings(Double balance, Map transactionHistory, Object accountHolder) {
+    public Savings(Double balance, ArrayList<Transaction> transactionHistory, Object accountHolder) {
         super(balance, transactionHistory, accountHolder);
     }
 
