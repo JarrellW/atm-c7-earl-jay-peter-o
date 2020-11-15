@@ -21,4 +21,8 @@ public class UserTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void validatePasswordTest() {
+
+    }
 }

@@ -37,6 +37,24 @@ public class User {
                 "with ID " + this.uuid + " created");
     }
 
+    /**
+     * boolean to check if password is correct when logging in
+     * @param password the password entered by user on attempted login
+     * @return returns true if hash of password parameter matches the user in question's password hash
+     */
+    public boolean validatePassword(String password) {
+        //password that is being checked for validity
+        String inputPasswordHash;
+        //converting password string into hash
+        inputPasswordHash = DigestUtils.sha256Hex(password);
+        //checking attempted password hash against this user's hashed password
+        if(inputPasswordHash.equals(this.passwordHash)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void addAccount(Account anAccount) {
         this.accounts.add(anAccount);
     }
