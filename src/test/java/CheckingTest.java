@@ -151,6 +151,7 @@ class CheckingTest {
         double postTargetBalance = prevTargetBalance + amount;
 
         checkingTest1.transfer(amount, checkingTest2);
+
         double actualOriginBalance = checkingTest1.getBalance();
         double actualTargetBalance = checkingTest2.getBalance();
     }
