@@ -53,4 +53,19 @@ public class UserTest {
         double actual = newUser.getAccountBalance(0);
         newUser.printAccountTransactionHistory(0);
     }
+
+    @Test
+    public void addAccountTest() {
+        UserWarehouse userWarehouse = new UserWarehouse();
+        AccountWarehouse accountWarehouse = new AccountWarehouse();
+        User newUser = new User("peter", "oberg", "password", userWarehouse);
+        accountWarehouse.createCheckingAccount(newUser, 10.0);
+
+        int expected1 = 1;
+        assertEquals(expected1, newUser.getNumAccounts());
+
+        accountWarehouse.createSavingsAccount(newUser, 1000);
+        int expected2 = 2;
+        assertEquals(expected2, newUser.getNumAccounts());
+    }
 }
