@@ -6,15 +6,15 @@ import java.util.ArrayList;
 public class User {
 
     //user's first name
-    private String firstName;
+    private final String firstName;
     //user's last name
-    private String lastName;
+    private final String lastName;
     //user's unique user ID
-    private String uuid;
+    private final String uuid;
     //user's hashed password
-    private String passwordHash;
+    private final String passwordHash;
     //user's list of accounts
-    private ArrayList<Account> accounts;
+    private final ArrayList<Account> accounts;
 
     /**
      *

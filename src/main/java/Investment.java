@@ -7,10 +7,10 @@ public class Investment extends Account implements Summary {
      *
      * @param balance
      * @param accountHolder
-     * @param transactionHistory
+     * @param accountNumber
      */
-    public Investment(double balance, ArrayList<Transaction> transactionHistory, User accountHolder, String accountNumber) {
-        super(balance, transactionHistory, accountHolder, accountNumber);
+    public Investment(double balance, User accountHolder, String accountNumber) {
+        super(balance, accountHolder, accountNumber);
     }
 
     public String toString(User accountHolder) {

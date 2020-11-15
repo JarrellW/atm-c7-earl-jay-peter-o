@@ -1,4 +1,4 @@
 public interface Summary {
 
-    public String toString(User accountHolder);
+   String toString(User accountHolder);
 }
