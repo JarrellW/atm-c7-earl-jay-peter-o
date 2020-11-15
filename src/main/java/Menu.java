@@ -197,7 +197,7 @@ public class Menu {
                     display.closedAccountMenu();
                     if (closeAccountSelection == 1){
                         System.out.println("Thank you for your business");
-//                        accountWarehouse.removeAccount(currentUser, selectedAccount.getAccountNumber());
+                        accountWarehouse.removeAccount(currentUser, selectedAccount.getAccountNumber());
                         loggedInMenu();
                     }
                 }else{
