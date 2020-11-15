@@ -51,7 +51,6 @@ public class UserTest {
         newUser.addAccountTransaction(0, -10);
         double expected = 15d;
         double actual = newUser.getAccountBalance(0);
-        //assertEquals(expected, actual, .001);
         newUser.printAccountTransactionHistory(0);
     }
 }
