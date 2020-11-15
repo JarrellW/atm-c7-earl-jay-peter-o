@@ -73,5 +73,7 @@ public class UserWarehouse {
         return null;
     }
 
-
+    public ArrayList<User> getUserList() {
+        return userList;
+    }
 }
