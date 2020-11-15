@@ -116,4 +116,12 @@ public class User {
     public int getNumAccounts() {
         return accounts.size();
     }
+
+    public void removeAccountFromUserList(Account account) {
+        for(Account a : accounts) {
+            if(a.getAccountNumber().equals(account.getAccountNumber())) {
+                this.accounts.remove(a);
+            }
+        }
+    }
 }

@@ -41,6 +41,15 @@ public class AccountWarehouse {
         return accountNumber;
     }
 
+    public void removeAccount(User accountHolder, String accountNumber) {
+        for(Account a : accounts) {
+            if(a.getAccountNumber().equals(accountNumber)) {
+                accounts.remove(a);
+                accountHolder.removeAccountFromUserList(a);
+            }
+        }
+    }
+
     public Savings createSavingsAccount(User accountHolder, double startingDeposit) {
         ArrayList<Transaction> transactionHistory = new ArrayList<Transaction>();
         Savings newAccount = new Savings(startingDeposit, accountHolder, getNewAccountNumber());
