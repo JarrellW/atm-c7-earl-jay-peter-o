@@ -1,5 +1,8 @@
 
+import java.io.Console;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Menu {
@@ -7,7 +10,7 @@ public class Menu {
     UserWarehouse warehouse = new UserWarehouse();
     User currentUser;
     AccountWarehouse accountWarehouse = new AccountWarehouse();
-
+    DecimalFormat formatter = new DecimalFormat("#,###.00");
     public void runMenu() {
         boolean running = true;
 
@@ -97,13 +100,12 @@ public class Menu {
     public void createUserMenu() {
             System.out.println("Enter First Name: ");
             String firstName = display.getStringInput();
-//        String firstName = Console.;
             System.out.println("Enter Last Name: ");
             String lastName = display.getStringInput();
             System.out.println("Create Password: ");
-//        Console console = System.console();
-//        char[] newPin = console.readPassword();
-//        String password = new String(newPin);
+//           System.out.println("Please Enter Password: ");
+////         char[] password = console.readPassword("Please Enter Password: ");
+////         String pass = new String(password);
             String password = display.getStringInput();
             User user = warehouse.addNewUser(firstName, lastName, password);
             System.out.println(" \n User " + firstName + " " + lastName + " successfully created, here is your ID: " + user.getUUID() + "\n");
@@ -113,18 +115,18 @@ public class Menu {
 
     public void withdrawMenu() {
         try {
-            System.out.println("Which account would you like to withdraw from? \n0. Back");
+            System.out.println(" \n Which account would you like to withdraw from? \n0. Back");
             displayUserAccounts();
             Integer accountSelection = display.getIntInput() - 1;
             if (accountSelection == -1) {
                 loggedInMenu();
             }
-            System.out.println("How much would you like to withdraw? (In dollars and cents)");
+            System.out.println("\n How much would you like to withdraw? (In dollars and cents)");
             Double amount = display.getDoubleInput();
             Account account = currentUser.getAccounts().get(accountSelection);
             account.withdraw(amount);
             account.addTransaction(amount * -1);
-            System.out.println("\n Your current balance for " + account.getClass().getSimpleName() + " is " + account.getBalance() + "\n");
+            System.out.println("\n Your current balance for " + account.getClass().getSimpleName() + " is " + formatter.format(account.getBalance()) + "\n");
             loggedInMenu();
         } catch (Exception e){
             System.out.println("Invalid Input");
@@ -134,18 +136,19 @@ public class Menu {
 
     public void depositMenu() {
         try {
-            System.out.println("Which account would you like to deposit into? \n0. Back");
+            System.out.println("\n Which account would you like to deposit into? \n0. Back" );
             displayUserAccounts();
             Integer accountSelection1 = display.getIntInput() - 1;
             if (accountSelection1 == -1) {
                 loggedInMenu();
             }
-            System.out.println("How much would you like to deposit? (In dollars and cents)");
+            System.out.println("\n How much would you like to deposit? (In dollars and cents)");
             Double amount1 = display.getDoubleInput();
             Account account = currentUser.getAccounts().get(accountSelection1);
             account.deposit(amount1);
             account.addTransaction(amount1);
-            System.out.println("\n Your current balance for " + account.getClass().getSimpleName() + " is " + account.getBalance() + "\n");
+
+            System.out.println("\n Your current balance for " + account.getClass().getSimpleName() + " is " +formatter.format( account.getBalance()) + "\n");
             loggedInMenu();
         } catch (Exception e){
             System.out.println("Invalid Input");
@@ -156,27 +159,27 @@ public class Menu {
 
     public void transferMenu() {
         try {
-            System.out.println("Which account would you like to transfer from? \n0. Back");
+            System.out.println("\n Which account would you like to transfer from? \n0. Back");
             displayUserAccounts();
             Integer accountSelection2 = display.getIntInput() - 1;
             if (accountSelection2 == -1) {
                 loggedInMenu();
             }
-            System.out.println("Which Account would you like to transfer to? \n0. Back");
+            System.out.println("\n Which Account would you like to transfer to? \n0. Back");
             displayUserAccounts();
             Integer accountSelection3 = display.getIntInput() - 1;
             if (accountSelection3 == -1) {
                 loggedInMenu();
             }
-            System.out.println("How much would you like to transfer? (In dollars and cents)");
+            System.out.println("\n How much would you like to transfer? (In dollars and cents)");
             Double amount3 = display.getDoubleInput();
             Account fromAccount = currentUser.getAccounts().get(accountSelection2);
             Account toAccount = currentUser.getAccounts().get(accountSelection3);
             fromAccount.transfer(amount3, toAccount);
             fromAccount.addTransaction(amount3 * -1);
             toAccount.addTransaction(amount3);
-            System.out.println("\n Your current balance for " + fromAccount.getClass().getSimpleName() + " is " + fromAccount.getBalance() + "\n");
-            System.out.println("\n Your current balance for " + toAccount.getClass().getSimpleName() + " is " + toAccount.getBalance() + "\n");
+            System.out.println("\n Your current balance for " + fromAccount.getClass().getSimpleName() + " is " +  formatter.format(fromAccount.getBalance()) + "\n");
+            System.out.println("\n Your current balance for " + toAccount.getClass().getSimpleName() + " is " + formatter.format(toAccount.getBalance()) + "\n");
             loggedInMenu();
 
         } catch (Exception e){
@@ -187,14 +190,14 @@ public class Menu {
 
     public void getBalanceMenu() {
         try {
-            System.out.println("Which account balance would you like to check? \n0. Back");
+            System.out.println("\n Which account balance would you like to check? \n0. Back");
             displayUserAccounts();
             Integer accountSelection4 = display.getIntInput() - 1;
             if (accountSelection4 == -1) {
                 loggedInMenu();
             }
             Account account = currentUser.getAccounts().get(accountSelection4);
-            System.out.println("\n Your current balance for " + account.getClass().getSimpleName() + " is " + account.getBalance() + "\n");
+            System.out.println("\n Your current balance for " + account.getClass().getSimpleName() + " is " + formatter.format(account.getBalance()) + "\n");
             loggedInMenu();
         } catch (Exception e){
             System.out.println("Invalid Input");
@@ -204,9 +207,13 @@ public class Menu {
 
     public void logoutMenu() {
         try {
-            System.out.println("Would you like to logout?");
+            System.out.println("\n Would you like to logout? \n0: Back");
             display.logOutMenu();
             Integer logoutSelection = display.getIntInput();
+            if(logoutSelection < 0 || logoutSelection > 2){
+                System.out.println("\n Invalid Input");
+                logoutMenu();
+            }
             if (logoutSelection == 1) {
                 currentUser = null;
                 runMenu();
@@ -214,14 +221,14 @@ public class Menu {
                 loggedInMenu();
             }
         } catch (Exception e){
-            System.out.println("Invalid Input");
+            System.out.println("\n Invalid Input");
             logoutMenu();
         }
     }
 
     public void closeAccountMenu() {
         try {
-            System.out.println("Select the account you wish to close \n0. Back");
+            System.out.println("\n Select the account you wish to close \n0. Back");
             displayUserAccounts();
             Integer closeAccountSelection2 = display.getIntInput() - 1;
             if (closeAccountSelection2 == -1) {
@@ -229,14 +236,14 @@ public class Menu {
             }
             Account selectedAccount = currentUser.getAccounts().get(closeAccountSelection2);
             if (selectedAccount.getBalance() == 0) {
-                System.out.println("Are you sure you want to close this account?");
+                System.out.println(" \n Are you sure you want to close this account?");
                 display.closedAccountMenu();
                 Integer closeAccountSelection = display.getIntInput();
                 if (closeAccountSelection == 1) {
-                    System.out.println("Are you sure?");
+                    System.out.println("\n Are you sure?");
                     display.closedAccountMenu();
                     if (closeAccountSelection == 1) {
-                        System.out.println("Thank you for your business");
+                        System.out.println("\n Thank you for your business");
                         accountWarehouse.removeAccount(currentUser, selectedAccount.getAccountNumber());
                         loggedInMenu();
                     }
@@ -246,7 +253,7 @@ public class Menu {
 
             }
             if (selectedAccount.getBalance() > 0) {
-                System.out.println("Please empty account before closing");
+                System.out.println("\n Please empty account before closing");
                 loggedInMenu();
             }
         }catch (Exception e){
@@ -257,7 +264,7 @@ public class Menu {
         }
         public void addAccountMenu() {
             try {
-                System.out.println("What type of Account would you like to make? \n0:Back");
+                System.out.println("\n What type of Account would you like to make? \n0:Back");
                 Display.addAccountsMenu();
                 Integer accountSelection6 = display.getIntInput();
                 if (accountSelection6 < 0 || accountSelection6 > 3){
@@ -266,10 +273,10 @@ public class Menu {
                 }if (accountSelection6 == 0){
                     loggedInMenu();
                 }
-                System.out.println("How much would you like to deposit into your new Account? \n0: Back");
+                System.out.println("\n How much would you like to deposit into your new Account? \n0: Back");
                 Double amount2 = display.getDoubleInput();
                 if (amount2 == 0){
-                    System.out.println("Invalid input new accounts must have a balance");
+                    System.out.println("\n Invalid input new accounts must have a balance");
                     addAccountMenu();
                 }
                 Random ran = new Random();
@@ -277,24 +284,18 @@ public class Menu {
                 String accountNum = Integer.toString(num);
                 if (accountSelection6 == 1) {
                     accountWarehouse.createCheckingAccount(currentUser, amount2);
-//                Checking checking = new Checking(amount2,currentUser,accountNum);
-//                currentUser.getAccounts().add(checking);
-                    System.out.println("\n Your Checking account was successfully created, with balance of " + amount2 + "\n");
+                    System.out.println("\n Your Checking account was successfully created, with balance of " + formatter.format(amount2) + "\n");
                     loggedInMenu();
                 }
                 if (accountSelection6 == 2) {
                     accountWarehouse.createSavingsAccount(currentUser, amount2);
-//                Savings savings = new Savings(amount2,currentUser,accountNum);
-//                currentUser.getAccounts().add(savings);
-                    System.out.println("\n You Savings account was successfully created, with balance of " + amount2 + "\n");
+                    System.out.println("\n You Savings account was successfully created, with balance of " + formatter.format(amount2)+ "\n");
                     loggedInMenu();
 
                 }
                 if (accountSelection6 == 3) {
                     accountWarehouse.createInvestmentAccount(currentUser, amount2);
-//                Investment investment = new Investment(amount2,currentUser,accountNum);
-//                currentUser.getAccounts().add(investment);
-                    System.out.println("\n You Investment account was successfully created, with balance of " + amount2 + "\n");
+                    System.out.println("\n You Investment account was successfully created, with balance of " + formatter.format(amount2)+ "\n");
                     loggedInMenu();
 
                 }
@@ -308,7 +309,7 @@ public class Menu {
 
         public void transactionHistoryMenu() {
             try {
-                System.out.println("Which account transaction history would you like to view? \n0. Back");
+                System.out.println("\n Which account transaction history would you like to view? \n0. Back");
                 displayUserAccounts();
                 Integer accountSelection4 = display.getIntInput() - 1;
                 if (accountSelection4 == -1) {
