@@ -1,6 +1,8 @@
 
+import java.io.Console;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Menu {
@@ -98,13 +100,12 @@ public class Menu {
     public void createUserMenu() {
             System.out.println("Enter First Name: ");
             String firstName = display.getStringInput();
-//        String firstName = Console.;
             System.out.println("Enter Last Name: ");
             String lastName = display.getStringInput();
             System.out.println("Create Password: ");
-//        Console console = System.console();
-//        char[] newPin = console.readPassword();
-//        String password = new String(newPin);
+//           System.out.println("Please Enter Password: ");
+////         char[] password = console.readPassword("Please Enter Password: ");
+////         String pass = new String(password);
             String password = display.getStringInput();
             User user = warehouse.addNewUser(firstName, lastName, password);
             System.out.println(" \n User " + firstName + " " + lastName + " successfully created, here is your ID: " + user.getUUID() + "\n");
@@ -135,7 +136,7 @@ public class Menu {
 
     public void depositMenu() {
         try {
-            System.out.println("\n Which account would you like to deposit into? \n0. Back");
+            System.out.println("\n Which account would you like to deposit into? \n0. Back" );
             displayUserAccounts();
             Integer accountSelection1 = display.getIntInput() - 1;
             if (accountSelection1 == -1) {
@@ -206,9 +207,13 @@ public class Menu {
 
     public void logoutMenu() {
         try {
-            System.out.println("\n Would you like to logout?");
+            System.out.println("\n Would you like to logout? \n0: Back");
             display.logOutMenu();
             Integer logoutSelection = display.getIntInput();
+            if(logoutSelection < 0 || logoutSelection > 2){
+                System.out.println("\n Invalid Input");
+                logoutMenu();
+            }
             if (logoutSelection == 1) {
                 currentUser = null;
                 runMenu();
@@ -216,7 +221,7 @@ public class Menu {
                 loggedInMenu();
             }
         } catch (Exception e){
-            System.out.println("Invalid Input");
+            System.out.println("\n Invalid Input");
             logoutMenu();
         }
     }
