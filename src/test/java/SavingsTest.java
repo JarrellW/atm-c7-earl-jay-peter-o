@@ -20,7 +20,7 @@ class SavingsTest {
 
         //When
         double prevBalance = savingsTest.getBalance();
-        double predictedBalance = savingsTest.compoundInterest(1);
+        double predictedBalance = savingsTest.compoundInterest() + prevBalance;
 
         //Then
         Assert.assertTrue(predictedBalance > prevBalance);

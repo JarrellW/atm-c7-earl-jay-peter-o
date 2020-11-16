@@ -1,5 +1,5 @@
 
-import java.io.Console;
+//import java.io.Console;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -156,7 +156,6 @@ public class Menu {
         }
     }
 
-
     public void transferMenu() {
         try {
             System.out.println("\n Which account would you like to transfer from? \n0. Back");
@@ -196,9 +195,26 @@ public class Menu {
             if (accountSelection4 == -1) {
                 loggedInMenu();
             }
+
             Account account = currentUser.getAccounts().get(accountSelection4);
-            account.toString();
-//            System.out.println("\n Your current balance for " + account.getClass().getSimpleName() + " is " + formatter.format(account.getBalance()) + "\n");
+            if (account.type.equals("checking")) {
+                System.out.println("\n\nYour current balance for " + account.getClass().getSimpleName() + " is " + formatter.format(account.getBalance()) + "\n\n\n");
+            }
+            else if (account.type.equals("savings")) {
+
+                System.out.println(String.format("\n\n%s\n%s\n%.2f\nCurrent interest rate is: %1.1f\n" +
+                                "With current balance as principal,\ncompounded monthly," +
+                                "\nthis account will accrue: $%.2f in 1 year.\n\n\n",
+                         "Savings", account.getAccountNumber(), account.getBalance(), account.interestPercent, account.accrued));
+            }
+            else if (account.type.equals("investment")) {
+
+                System.out.println(String.format("\n\n%s\n%s\n%.2f\nCurrent interest rate is: %1.1f\n" +
+                                "With current balance as principal,\ncompounded monthly," +
+                                "\nthis account will accrue: $%.2f in 1 year.\n\n\n",
+                         "investment",
+                        account.getAccountNumber(), account.getBalance(), account.interestPercent, account.accrued));
+            }
             loggedInMenu();
         } catch (Exception e){
             System.out.println("Invalid Input");
@@ -263,75 +279,76 @@ public class Menu {
         }
 
         }
-        public void addAccountMenu() {
-            try {
-                System.out.println("\n What type of Account would you like to make? \n0:Back");
-                Display.addAccountsMenu();
-                Integer accountSelection6 = display.getIntInput();
-                if (accountSelection6 < 0 || accountSelection6 > 3){
-                    System.out.println("Invalid Input");
-                    addAccountMenu();
-                }if (accountSelection6 == 0){
-                    loggedInMenu();
-                }
-                System.out.println("\n How much would you like to deposit into your new Account? \n0: Back");
-                Double amount2 = display.getDoubleInput();
-                if (amount2 == 0){
-                    System.out.println("\n Invalid input new accounts must have a balance");
-                    addAccountMenu();
-                }
-                Random ran = new Random();
-                Integer num = ran.nextInt(90000000) + 10000000;
-                String accountNum = Integer.toString(num);
-                if (accountSelection6 == 1) {
-                    accountWarehouse.createCheckingAccount(currentUser, amount2);
-                    System.out.println("\n Your Checking account was successfully created, with balance of " + formatter.format(amount2) + "\n");
-                    loggedInMenu();
-                }
-                if (accountSelection6 == 2) {
-                    accountWarehouse.createSavingsAccount(currentUser, amount2);
-                    System.out.println("\n You Savings account was successfully created, with balance of " + formatter.format(amount2)+ "\n");
-                    loggedInMenu();
 
-                }
-                if (accountSelection6 == 3) {
-                    accountWarehouse.createInvestmentAccount(currentUser, amount2);
-                    System.out.println("\n You Investment account was successfully created, with balance of " + formatter.format(amount2)+ "\n");
-                    loggedInMenu();
-
-                }
-
-
-            } catch (Exception e){
+    public void addAccountMenu() {
+        try {
+            System.out.println("\n What type of Account would you like to make? \n0:Back");
+            Display.addAccountsMenu();
+            Integer accountSelection6 = display.getIntInput();
+            if (accountSelection6 < 0 || accountSelection6 > 3){
                 System.out.println("Invalid Input");
                 addAccountMenu();
-            }
-        }
-
-        public void transactionHistoryMenu() {
-            try {
-                System.out.println("\n Which account transaction history would you like to view? \n0. Back");
-                displayUserAccounts();
-                Integer accountSelection4 = display.getIntInput() - 1;
-                if (accountSelection4 == -1) {
-                    loggedInMenu();
-                }
-                Account account = currentUser.getAccounts().get(accountSelection4);
-                System.out.println("\n Here is your transaction history for " + account.getClass().getSimpleName());
-                account.printTransactionHistory();
+            }if (accountSelection6 == 0){
                 loggedInMenu();
-            } catch (Exception e){
-                System.out.println("Invalid Input");
-                transactionHistoryMenu();
             }
-        }
+            System.out.println("\n How much would you like to deposit into your new Account? \n0: Back");
+            Double amount2 = display.getDoubleInput();
+            if (amount2 == 0){
+                System.out.println("\n Invalid input new accounts must have a balance");
+                addAccountMenu();
+            }
+            Random ran = new Random();
+            Integer num = ran.nextInt(90000000) + 10000000;
+            String accountNum = Integer.toString(num);
+            if (accountSelection6 == 1) {
+                accountWarehouse.createCheckingAccount(currentUser, amount2);
+                System.out.println("\n Your Checking account was successfully created, with balance of " + formatter.format(amount2) + "\n");
+                loggedInMenu();
+            }
+            if (accountSelection6 == 2) {
+                accountWarehouse.createSavingsAccount(currentUser, amount2);
+                System.out.println("\n You Savings account was successfully created, with balance of " + formatter.format(amount2)+ "\n");
+                loggedInMenu();
 
-        public void displayUserAccounts(){
-        ArrayList<Account> accounts = currentUser.getAccounts();
-        for (int i = 0; i < accounts.size(); i++) {
-            System.out.println(i+1 + ". " + accounts.get(i).getClass().getSimpleName());
+            }
+            if (accountSelection6 == 3) {
+                accountWarehouse.createInvestmentAccount(currentUser, amount2);
+                System.out.println("\n You Investment account was successfully created, with balance of " + formatter.format(amount2)+ "\n");
+                loggedInMenu();
 
+            }
+
+
+        } catch (Exception e){
+            System.out.println("Invalid Input");
+            addAccountMenu();
         }
     }
+
+    public void transactionHistoryMenu() {
+        try {
+            System.out.println("\n Which account transaction history would you like to view? \n0. Back");
+            displayUserAccounts();
+            Integer accountSelection4 = display.getIntInput() - 1;
+            if (accountSelection4 == -1) {
+                loggedInMenu();
+            }
+            Account account = currentUser.getAccounts().get(accountSelection4);
+            System.out.println("\n Here is your transaction history for " + account.getClass().getSimpleName());
+            account.printTransactionHistory();
+            loggedInMenu();
+        } catch (Exception e){
+            System.out.println("Invalid Input");
+            transactionHistoryMenu();
+        }
+    }
+
+    public void displayUserAccounts(){
+    ArrayList<Account> accounts = currentUser.getAccounts();
+    for (int i = 0; i < accounts.size(); i++) {
+        System.out.println(i+1 + ". " + accounts.get(i).getClass().getSimpleName());
+
+    }
+}
 }
 

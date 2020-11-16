@@ -1,10 +1,8 @@
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Random;
+public class Investment extends Account {
+    private double r = Math.random()/50;
+    private double n = 364;
+    private double aggregate;
 
-public class Investment extends Account implements Summary {
-    private double APY;
-    private double n = 12;
 
     /**
      * Constructor
@@ -13,26 +11,44 @@ public class Investment extends Account implements Summary {
      * @param accountHolder
      * @param accountNumber
      */
+
     public Investment(double balance, User accountHolder, String accountNumber) {
         super(balance, accountHolder, accountNumber);
+        this.type = "investment";
+        this.interestPercent = r * 100;
+        this.accrued = compoundInterest();
     }
 
-    public double compoundInterest(int years) {
-        Random rando = new Random();
+    @Override
+    public Account getFirstName() {
+        return null;
+    }
+
+    @Override
+    public Account getLastName() {
+        return null;
+    }
+
+    public double compoundInterest() {
         double principal = this.getBalance();
-        this.APY = rando.nextDouble() * 5;
-
-        double amount = principal * Math.pow(1 + (this.APY / n), n * years);
-        double compAmount = amount - principal;
-        double aggregateAmount = amount + principal;
-        return aggregateAmount;
+        double amount = principal * Math.pow(1 + (r / n), n * 1);
+        this.accrued = amount - principal;
+        this.aggregate = amount + principal;
+        return accrued;
     }
-
-    public String toString(User accountHolder) {
+/*
+    @Override
+    public String toString() {
         {
             double balance = this.getBalance();
-            return String.format("%s %s\n %s\n%s\n%.2f", accountHolder.getFirstName(), accountHolder.getLastName(), "Savings", this.getAccountNumber(), this.getBalance());
+            return String.format("%s %s\n %s\n%s\n%.2f\nCurrent interest rate is: %1.1f\n" +
+                    "With current balance as principal,\ncompounded daily," +
+                    "\nthis account will accrue: $%.2f in 1 year.",
+                    accountHolder.getFirstName(), accountHolder.getLastName(), "Investment",
+                    this.getAccountNumber(), this.getBalance(), interestPercent, accrued);
 
         }
     }
+
+ */
 }

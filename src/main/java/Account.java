@@ -2,6 +2,9 @@ import java.util.ArrayList;
 
 public abstract class Account implements Summary {
 
+    public String type;
+    public double interestPercent;
+    public double accrued;
     private double balance;
     private final String accountNumber;
     private final User accountHolder;
@@ -100,6 +103,11 @@ public abstract class Account implements Summary {
     }
 
 
+    public abstract Account getFirstName();
+
+    public abstract Account getLastName();
+
+    public abstract double compoundInterest();
 }
 
 
