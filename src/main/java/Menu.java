@@ -210,7 +210,7 @@ public class Menu {
             else if (account.type.equals("investment")) {
 
                 System.out.println(String.format("\n\n%s\n%s\n%.2f\nCurrent interest rate is: %1.1f\n" +
-                                "With current balance as principal,\ncompounded monthly," +
+                                "With current balance as principal,\ncompounded daily," +
                                 "\nthis account will accrue: $%.2f in 1 year.\n\n\n",
                          "investment",
                         account.getAccountNumber(), account.getBalance(), account.interestPercent, account.accrued));
