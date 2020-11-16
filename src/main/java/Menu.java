@@ -282,7 +282,7 @@ public class Menu {
 
     public void addAccountMenu() {
         try {
-            System.out.println("\n What type of Account would you like to make? \n0:Back");
+            System.out.println("\n What type of Account would you like to make? \n0: Back");
             Display.addAccountsMenu();
             Integer accountSelection6 = display.getIntInput();
             if (accountSelection6 < 0 || accountSelection6 > 3){
@@ -291,10 +291,10 @@ public class Menu {
             }if (accountSelection6 == 0){
                 loggedInMenu();
             }
-            System.out.println("\n How much would you like to deposit into your new Account? \n0: Back");
+            System.out.println("\n How much would you like to deposit into your new Account? \n:0 Back");
             Double amount2 = display.getDoubleInput();
-            if (amount2 == 0){
-                System.out.println("\n Invalid input new accounts must have a balance");
+            if (amount2 == 0 || amount2 < 0){
+                System.out.println("\n Invalid input new accounts must have a positive balance balance.");
                 addAccountMenu();
             }
             Random ran = new Random();
