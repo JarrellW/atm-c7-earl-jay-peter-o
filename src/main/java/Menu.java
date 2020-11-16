@@ -197,7 +197,8 @@ public class Menu {
                 loggedInMenu();
             }
             Account account = currentUser.getAccounts().get(accountSelection4);
-            System.out.println("\n Your current balance for " + account.getClass().getSimpleName() + " is " + formatter.format(account.getBalance()) + "\n");
+            account.toString();
+//            System.out.println("\n Your current balance for " + account.getClass().getSimpleName() + " is " + formatter.format(account.getBalance()) + "\n");
             loggedInMenu();
         } catch (Exception e){
             System.out.println("Invalid Input");
@@ -324,7 +325,8 @@ public class Menu {
                 transactionHistoryMenu();
             }
         }
-    public void displayUserAccounts(){
+
+        public void displayUserAccounts(){
         ArrayList<Account> accounts = currentUser.getAccounts();
         for (int i = 0; i < accounts.size(); i++) {
             System.out.println(i+1 + ". " + accounts.get(i).getClass().getSimpleName());
